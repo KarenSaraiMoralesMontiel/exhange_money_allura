@@ -1,6 +1,9 @@
 package com.exchange.currency;
-import com.exchange.currency.persistencia.CambioMonedaImpl;
+import com.exchange.currency.object.RecordExchange;
+import com.exchange.currency.utils.CurrencyExchangeUtil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -10,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         String option;
+        List<RecordExchange> recordExchangeList = new ArrayList<>();
         String menu = """
                 
                 Sea bienvenido/a al Conversor de Moneda =
@@ -20,7 +24,8 @@ public class Main {
                 4) Real brasileño =>> Dólar
                 5) Dólar =>> Peso colombiano
                 6) Peso colombiano =>> Dólar
-                7) Salir
+                7) Record
+                8) Salir
                 Elija una opción válida:""";
 
         do {
@@ -29,106 +34,87 @@ public class Main {
             option = s.nextLine();
             switch (option) {
                 case "1" : {
-                    try {
+                    String currency = "USD";
+                    String currencyToChange = "ARS";
+                    CurrencyExchangeUtil currencyExchangeUtil = new CurrencyExchangeUtil(currency, currencyToChange);
                     System.out.println("Entre el monto para cambiar");
-                    Double monto = Double.parseDouble(s.nextLine());
-                    CambioMonedaImpl cambioMonedaImpl = new CambioMonedaImpl("USD", "ARS");
-                    Double total = cambioMonedaImpl.getCambioMoneda() * monto;
-                    String truncated_total = String.format("%.4f", total);
-                    System.out.println("Total: " + truncated_total + " " + cambioMonedaImpl.getCurrencyToChange()); }
-                    catch (NumberFormatException n) {
-                        System.out.println("Entre un monto válido");
-                    }
-                    catch (Exception e) {
-                        System.out.println(e);
-                    }
+                    String montoS = s.nextLine();
+                    currencyExchangeUtil.getTotalExchange(montoS);
+                    RecordExchange recordExchange = currencyExchangeUtil.getRecordExchange();
+                    recordExchangeList.add(recordExchange);
                     break;
                 }
                 case "2" : {
-                    try {
+                    String currency = "ARS";
+                    String currencyToChange = "USD";
+                    CurrencyExchangeUtil currencyExchangeUtil = new CurrencyExchangeUtil(currency, currencyToChange);
                     System.out.println("Entre el monto para cambiar");
-                    Double monto = Double.parseDouble(s.nextLine());
-                    CambioMonedaImpl cambioMonedaImpl = new CambioMonedaImpl("ARS", "USD");
-
-                    Double total = cambioMonedaImpl.getCambioMoneda() * monto;
-                    String truncated_total = String.format("%.4f", total);
-                    System.out.println("Total: " + truncated_total + " " + cambioMonedaImpl.getCurrencyToChange()); }
-                    catch (NumberFormatException n) {
-                        System.out.println("Entre un monto válido");
-                    }
-                    catch (Exception e) {
-                        System.out.println(e);
-
-                    }
+                    String montoS = s.nextLine();
+                    currencyExchangeUtil.getTotalExchange(montoS);
+                    RecordExchange recordExchange = currencyExchangeUtil.getRecordExchange();
+                    recordExchangeList.add(recordExchange);
                     break;
                 }
                 case "3" : {
-                    try {
+                    String currency = "USD";
+                    String currencyToChange = "BRL";
+                    CurrencyExchangeUtil currencyExchangeUtil = new CurrencyExchangeUtil(currency, currencyToChange);
                     System.out.println("Entre el monto para cambiar");
-                    Double monto = Double.parseDouble(s.nextLine());
-                    CambioMonedaImpl cambioMonedaImpl = new CambioMonedaImpl("USD", "BRL");
-
-                    Double total = cambioMonedaImpl.getCambioMoneda() * monto;
-                    String truncated_total = String.format("%.4f", total);
-                    System.out.println("Total: " + truncated_total + " " + cambioMonedaImpl.getCurrencyToChange());}
-                    catch (NumberFormatException n) {
-                        System.out.println("Entre un monto válido");
-                    }
-                    catch (Exception e) {
-                        System.out.println(e);
-                    }
+                    String montoS = s.nextLine();
+                    currencyExchangeUtil.getTotalExchange(montoS);
+                    RecordExchange recordExchange = currencyExchangeUtil.getRecordExchange();
+                    recordExchangeList.add(recordExchange);
                     break;
                 }
                 case "4" : {
-                    try {
+                    String currency = "BRL";
+                    String currencyToChange = "USD";
+                    CurrencyExchangeUtil currencyExchangeUtil = new CurrencyExchangeUtil(currency, currencyToChange);
                     System.out.println("Entre el monto para cambiar");
-                    Double monto = Double.parseDouble(s.nextLine());
-                    CambioMonedaImpl cambioMonedaImpl = new CambioMonedaImpl("BRL", "USD");
-
-                    Double total = cambioMonedaImpl.getCambioMoneda() * monto;
-                    String truncated_total = String.format("%.4f", total);
-                    System.out.println("Total: " + truncated_total + " " + cambioMonedaImpl.getCurrencyToChange());}
-                    catch (NumberFormatException n) {
-                        System.out.println("Entre un monto válido");
-                    }
-                    catch (Exception e) {
-                        System.out.println(e);
-                    }
-
+                    String montoS = s.nextLine();
+                    currencyExchangeUtil.getTotalExchange(montoS);
+                    RecordExchange recordExchange = currencyExchangeUtil.getRecordExchange();
+                    recordExchangeList.add(recordExchange);
                     break;
                 }
                 case "5" : {
-                    try {
+                    String currency = "USD";
+                    String currencyToChange = "COP";
+                    CurrencyExchangeUtil currencyExchangeUtil = new CurrencyExchangeUtil(currency, currencyToChange);
                     System.out.println("Entre el monto para cambiar");
-                    Double monto = Double.parseDouble(s.nextLine());
-                    CambioMonedaImpl cambioMonedaImpl = new CambioMonedaImpl("USD", "COP");
-                    Double total = cambioMonedaImpl.getCambioMoneda() * monto;
-                    String truncated_total = String.format("%.4f", total);
-                    System.out.println("Total: " + truncated_total + " " + cambioMonedaImpl.getCurrencyToChange()); }
-                    catch (NumberFormatException n) {
-                        System.out.println("Entre un monto válido");
-                    }
-                    catch (Exception e) {
-                        System.out.println(e);
-                    }
+                    String montoS = s.nextLine();
+                    currencyExchangeUtil.getTotalExchange(montoS);
+                    RecordExchange recordExchange = currencyExchangeUtil.getRecordExchange();
+                    recordExchangeList.add(recordExchange);
                     break;
                 }
                 case "6" : {
-                    try {
+                    String currency = "COP";
+                    String currencyToChange = "USD";
+                    CurrencyExchangeUtil currencyExchangeUtil = new CurrencyExchangeUtil(currency, currencyToChange);
                     System.out.println("Entre el monto para cambiar");
-                    Double monto = Double.parseDouble(s.nextLine());
-                    CambioMonedaImpl cambioMonedaImpl = new CambioMonedaImpl("COP", "USD");
-                    Double total = cambioMonedaImpl.getCambioMoneda() * monto;
-                    System.out.println("Total: " + total + " " + cambioMonedaImpl.getCurrencyToChange());}
-                    catch (NumberFormatException n) {
-                        System.out.println("Entre un monto válido");
-                    }
-                    catch (Exception e) {
-                        System.out.println(e);
-                    }
+                    String montoS = s.nextLine();
+                    currencyExchangeUtil.getTotalExchange(montoS);
+                    RecordExchange recordExchange = currencyExchangeUtil.getRecordExchange();
+                    recordExchangeList.add(recordExchange);
                     break;
                 }
                 case "7":
+                    System.out.format("| %3s | %-10s | %-5s | %-5s | %-30s | %-10s |",
+                            "NO.",
+                            "MONTO",
+                            "ORIGINAL",
+                            "CAMBIO",
+                            "TIMESTAMP",
+                            "STATUS");
+                    System.out.println();
+                    for (int i = 0; i < recordExchangeList.size(); i++) {
+                        System.out.printf("| %-3d %s%n", (i+1), recordExchangeList.get(i).toString());
+                    }
+                    System.out.println("Presione enter para continuar...");
+                    s.nextLine();
+                    break;
+                case "8":
                     System.out.println("Bye bye!");
                     break;
                 default: {
@@ -137,7 +123,7 @@ public class Main {
                     s.nextLine();
                 }
             }
-        } while (!option.equals("7"));
+        } while (!option.equals("8"));
     }
 
 }
