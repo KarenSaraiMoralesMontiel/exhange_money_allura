@@ -1,6 +1,6 @@
 package com.exchange.currency;
 import com.exchange.currency.object.RecordExchange;
-import com.exchange.currency.utils.CurrencyExchangeUtil;
+import com.exchange.currency.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +100,7 @@ public class Main {
                     break;
                 }
                 case "7":
-                    System.out.format("| %3s | %-10s | %-5s | %-5s | %-30s | %-10s |",
+                    System.out.format("| %3s | %-10s | %-5s | %-7s | %-30s | %-10s |",
                             "NO.",
                             "MONTO",
                             "ORIGINAL",
